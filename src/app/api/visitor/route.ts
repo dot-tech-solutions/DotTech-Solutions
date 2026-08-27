@@ -19,7 +19,7 @@ export async function GET() {
         'Cache-Control': 'public, max-age=0, must-revalidate',
       },
     });
-  } catch (error) {
+  } catch {
     return new NextResponse("Error fetching badge", { status: 500 });
   }
 }

@@ -3,14 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Instagram, Linkedin } from "@/components/ui/SocialIcons";
 import Logo from "@/components/ui/Logo";
 
 type NavLink = {
   label: string;
   href: string;
-  children?: { label: string; href: string; }[];
 };
 
 const navLinks: NavLink[] = [
@@ -19,8 +18,6 @@ const navLinks: NavLink[] = [
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
 ];
-
-
 
 const socialLinks = [
   {
@@ -40,8 +37,6 @@ const socialLinks = [
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const [companyOpen, setCompanyOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -60,8 +55,8 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.05)] border-b border-slate-200"
-            : "bg-white border-b border-transparent"
+            ? "bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(31,38,135,0.08)] border-b border-white/60"
+            : "bg-white/60 backdrop-blur-md border-b border-white/30"
         }`}
       >
         <div className="section-container">
@@ -70,63 +65,26 @@ export default function Navbar() {
             <Logo size="sm" showWordmark />
 
             {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center gap-2">
-              {navLinks.map((link) =>
-                link.children ? (
-                  <div key={link.label} className="relative group">
-                    <button
-                      className="flex items-center gap-1 px-4 py-2 rounded-lg text-slate-700 hover:text-blue-600 text-sm font-semibold transition-colors duration-200"
-                      onMouseEnter={() => setCompanyOpen(true)}
-                      onMouseLeave={() => setCompanyOpen(false)}
-                    >
-                      {link.label}
-                      <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180 duration-200" />
-                    </button>
-                    {/* Dropdown */}
-                    <div
-                      className={`absolute top-full left-0 mt-2 w-48 bg-white border border-slate-200 rounded-xl shadow-lg transition-all duration-200 ${
-                        companyOpen
-                          ? "opacity-100 translate-y-0 pointer-events-auto"
-                          : "opacity-0 -translate-y-2 pointer-events-none"
-                      }`}
-                      onMouseEnter={() => setCompanyOpen(true)}
-                      onMouseLeave={() => setCompanyOpen(false)}
-                    >
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          href={child.href}
-                          className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-colors first:rounded-t-xl last:rounded-b-xl"
-                        >
-                          <ArrowRight className="w-3.5 h-3.5 opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all" />
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    key={link.label}
-                    href={link.href}
-                    className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 relative ${
-                      pathname === link.href
-                        ? "text-blue-600"
-                        : "text-slate-700 hover:text-blue-600"
-                    }`}
-                  >
-                    {link.label}
-                    {pathname === link.href && (
-                      <span className="absolute bottom-1 left-4 right-4 h-0.5 bg-blue-600 rounded-full" />
-                    )}
-                  </Link>
-                )
-              )}
+            <div className="hidden lg:flex items-center gap-1.5 p-1.5 rounded-full bg-slate-100/70 backdrop-blur-lg border border-white/80 shadow-inner">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 relative ${
+                    pathname === link.href
+                      ? "text-blue-600 bg-white shadow-[0_2px_12px_rgba(37,99,235,0.15)] border border-blue-100/60"
+                      : "text-slate-600 hover:text-blue-600 hover:bg-white/60"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
 
-            {/* Right Side: Socials + Portal + CTA */}
+            {/* Right Side: Socials + CTA */}
             <div className="hidden lg:flex items-center gap-4">
               {/* Social Icons */}
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1.5 p-1 rounded-full bg-slate-100/60 backdrop-blur-md border border-white/80">
                 {socialLinks.map((s) => (
                   <a
                     key={s.label}
@@ -134,7 +92,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className={`p-2 rounded-lg text-slate-400 transition-colors duration-200 hover:bg-slate-100 ${s.color}`}
+                    className={`p-2 rounded-full text-slate-500 transition-all duration-200 hover:bg-white hover:shadow-sm ${s.color}`}
                   >
                     <s.icon className="w-4 h-4" />
                   </a>
@@ -142,9 +100,7 @@ export default function Navbar() {
               </div>
 
               {/* Divider */}
-              <div className="h-6 w-px bg-slate-200 mx-1" />
-
-
+              <div className="h-6 w-px bg-slate-200/80 mx-1" />
 
               {/* CTA Button */}
               <Link href="/contact" className="btn-brand">
@@ -154,7 +110,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Toggle */}
             <button
-              className="lg:hidden p-2 rounded-lg text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition-colors"
+              className="lg:hidden p-2.5 rounded-xl bg-slate-100/80 backdrop-blur-md text-slate-700 hover:text-blue-600 hover:bg-white transition-colors border border-white/60 shadow-sm"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -167,14 +123,14 @@ export default function Navbar() {
       {/* Mobile Drawer Overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 lg:hidden"
+          className="fixed inset-0 bg-slate-900/30 backdrop-blur-md z-40 lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 z-50 lg:hidden bg-white shadow-2xl transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-72 z-50 lg:hidden bg-white/90 backdrop-blur-2xl border-l border-white/60 shadow-2xl transition-transform duration-300 ease-in-out ${
           mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -191,44 +147,24 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Nav Links */}
-          <nav className="flex-1 space-y-1 overflow-y-auto">
-            {navLinks.map((link) =>
-              link.children ? (
-                <div key={link.label}>
-                  <div className="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-widest mt-4 mb-1">
-                    {link.label}
-                  </div>
-                  {link.children.map((child) => (
-                    <Link
-                      key={child.label}
-                      href={child.href}
-                      className="flex items-center gap-2 pl-6 pr-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-colors"
-                    >
-                      <ArrowRight className="w-3.5 h-3.5" />
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              ) : (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className={`block px-3 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
-                    pathname === link.href
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-slate-700 hover:text-blue-600 hover:bg-slate-50"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
-            )}
-
-
+          <nav className="flex-1 space-y-1.5 overflow-y-auto">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`block px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+                  pathname === link.href
+                    ? "text-blue-600 bg-blue-50/80 border border-blue-200/50 shadow-sm"
+                    : "text-slate-700 hover:text-blue-600 hover:bg-slate-50"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           {/* Mobile Footer: Socials + CTA */}
-          <div className="pt-6 border-t border-slate-100 mt-auto">
+          <div className="pt-6 border-t border-slate-100/80 mt-auto">
             <div className="flex gap-3 mb-4 justify-center">
               {socialLinks.map((s) => (
                 <a
@@ -237,7 +173,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-50 border border-slate-200 text-sm font-medium text-slate-500 hover:bg-white transition-colors ${s.color}`}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-50/80 backdrop-blur-md border border-slate-200/60 text-sm font-medium text-slate-600 hover:bg-white hover:shadow-sm transition-all ${s.color}`}
                 >
                   <s.icon className="w-4 h-4" />
                 </a>

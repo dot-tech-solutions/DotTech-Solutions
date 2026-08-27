@@ -407,7 +407,7 @@ export default function AdminPage() {
         style={{ background: "rgba(8,12,22,0.98)", borderRight: "1px solid rgba(255,255,255,0.06)", backdropFilter: "blur(24px)" }}
       >
         <div className="p-5 border-b border-white/[0.06]">
-          <Logo size="sm" showWordmark />
+          <Logo size="sm" lightMode showWordmark />
           <div className="mt-3 px-2 py-1.5 rounded-lg text-xs font-medium text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 inline-block">
             Admin Panel
           </div>

@@ -6,7 +6,7 @@ import Logo from "@/components/ui/Logo";
 import {
   LayoutDashboard, FileText, FolderOpen, MessageSquare,
   Calendar, LogOut, CheckCircle, Clock, AlertCircle,
-  TrendingUp, CreditCard, Download, Send, ChevronRight, X
+  TrendingUp, CreditCard, Download, Send, ChevronRight
 } from "lucide-react";
 
 /* ======================== TYPES & DATA ======================== */
@@ -40,7 +40,7 @@ function PortalLayout({ children, activeTab, setActiveTab }: {
       >
         {/* Sidebar Header */}
         <div className="p-5 border-b border-white/[0.06]">
-          <Logo size="sm" showWordmark />
+          <Logo size="sm" lightMode showWordmark />
           <div className="mt-3 px-2 py-1.5 rounded-lg text-xs font-medium text-blue-400 bg-blue-500/10 border border-blue-500/20 inline-block">
             Client Portal
           </div>
@@ -292,7 +292,17 @@ function SupportTab() {
       <h2 className="text-xl font-bold text-white">Support</h2>
       <div className="glass-card p-4 flex items-center gap-3 mb-4" style={{ background: "rgba(26,86,219,0.06)", borderColor: "rgba(26,86,219,0.2)" }}>
         <AlertCircle className="w-4 h-4 text-blue-400" />
-        <p className="text-xs text-slate-400">For urgent issues, call <a href="tel:+919025088044" className="text-blue-400">+91 90250 88044</a> or email <a href="mailto:info.dottechsolutions@gmail.com" className="text-blue-400">info.dottechsolutions@gmail.com</a></p>
+        <p className="text-xs text-slate-400">
+          For urgent issues, call <a href="tel:+919025088044" className="text-blue-400">+91 90250 88044</a> or email{" "}
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=info.dottechsolutions@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400"
+          >
+            info.dottechsolutions@gmail.com
+          </a>
+        </p>
       </div>
 
       {/* Chat */}
@@ -341,7 +351,9 @@ function MeetingsTab() {
         <h3 className="text-slate-400 font-semibold mb-2">Schedule a Meeting</h3>
         <p className="text-sm text-slate-600 mb-5">Book a call with your project manager to discuss progress, questions, or next steps.</p>
         <a
-          href="mailto:info.dottechsolutions@gmail.com?subject=Meeting Request"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=info.dottechsolutions@gmail.com&su=Meeting%20Request"
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-brand inline-flex items-center gap-2 text-sm"
         >
           Book a Meeting <ChevronRight className="w-3.5 h-3.5" />

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
 import {
-  LayoutDashboard, CheckSquare, Clock, Calendar, DollarSign,
-  BookOpen, LogOut, ClockIcon, ChevronRight, Plus, X, Send
+  LayoutDashboard, CheckSquare, Calendar, DollarSign,
+  BookOpen, LogOut, ClockIcon, ChevronRight, Plus, X
 } from "lucide-react";
 
 type TabId = "dashboard" | "attendance" | "tasks" | "meetings" | "salary" | "knowledge";
@@ -272,7 +272,14 @@ function SalaryTab() {
       </div>
       <div className="glass-card p-5 text-center">
         <p className="text-xs text-slate-600 mb-3">For salary queries, contact HR at</p>
-        <a href="mailto:info.dottechsolutions@gmail.com" className="text-blue-400 text-sm">info.dottechsolutions@gmail.com</a>
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=info.dottechsolutions@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-400 text-sm hover:underline"
+        >
+          info.dottechsolutions@gmail.com
+        </a>
       </div>
     </div>
   );
@@ -356,7 +363,7 @@ export default function EmployeePortalPage() {
         style={{ background: "rgba(8,12,22,0.98)", borderRight: "1px solid rgba(255,255,255,0.06)", backdropFilter: "blur(24px)" }}
       >
         <div className="p-5 border-b border-white/[0.06]">
-          <Logo size="sm" showWordmark />
+          <Logo size="sm" lightMode showWordmark />
           <div className="mt-3 px-2 py-1.5 rounded-lg text-xs font-medium text-purple-400 bg-purple-500/10 border border-purple-500/20 inline-block">
             Employee Portal
           </div>
