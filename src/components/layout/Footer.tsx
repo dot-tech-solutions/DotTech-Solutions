@@ -109,7 +109,7 @@ export default function Footer() {
                 © {currentYear} DotTech Solutions. All rights reserved.
               </p>
               <p className="text-xs text-slate-400 font-medium tracking-wide">
-                MSME: UDYAM-TN-32-0110164
+                MSME Registered Enterprise : UDYAM-TN-32-0110164
               </p>
             </div>
             {/* Visitor Counter Badge */}
