@@ -140,7 +140,7 @@ export default function HomeContent() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
                 </span>
                 <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-                Innovating Tomorrow, Building Today
+                Innovative. Solve. Scale.
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.12] mb-6 tracking-tight">
@@ -201,7 +201,7 @@ export default function HomeContent() {
                   <h3 className="text-3xl font-black text-slate-900 mb-1 flex items-center gap-1.5">
                     DotTech <span className="text-blue-600">Solutions</span>
                   </h3>
-                  <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Innovating Tomorrow</p>
+                  <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">Innovative. Solve. Scale.</p>
                 </div>
               </div>
             </div>

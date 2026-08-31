@@ -37,7 +37,7 @@ export default function Footer() {
               <Logo size="md" lightMode showWordmark />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-8">
-              Innovating Tomorrow, Building Today. We engineer enterprise-grade software, AI solutions, and digital transformation for modern businesses.
+              Innovative. Solve. Scale. We engineer enterprise-grade software, AI solutions, and digital transformation for modern businesses.
             </p>
             
             <div className="space-y-3">

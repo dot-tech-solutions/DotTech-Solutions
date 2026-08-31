@@ -74,7 +74,7 @@ export default function Logo({
           <span className={`text-[0.6rem] tracking-[0.18em] uppercase font-semibold ${
             lightMode ? "text-slate-400" : "text-slate-500"
           }`}>
-            Innovating Tomorrow
+            Innovative. Solve. Scale.
           </span>
         </div>
       )}

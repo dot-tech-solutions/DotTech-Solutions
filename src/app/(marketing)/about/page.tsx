@@ -118,7 +118,7 @@ export default function AboutPage() {
               </p>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                 Our name reflects our identity: precise (Dot), technical (Tech),
-                and solution-oriented. We live by: <span className="gradient-text font-bold">Innovating Tomorrow, Building Today.</span>
+                and solution-oriented. We live by: <span className="gradient-text font-bold">Innovative. Solve. Scale.</span>
               </p>
             </div>
 

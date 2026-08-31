@@ -10,7 +10,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "DotTech Solutions | Innovating Tomorrow, Building Today",
+    default: "DotTech Solutions | Innovative. Solve. Scale.",
     template: "%s | DotTech Solutions",
   },
   description:
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://dottechsolutions.com",
-    title: "DotTech Solutions | Innovating Tomorrow, Building Today",
+    title: "DotTech Solutions | Innovative. Solve. Scale.",
     description:
       "Enterprise-grade software development, AI solutions, and digital transformation services.",
     siteName: "DotTech Solutions",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DotTech Solutions | Innovating Tomorrow, Building Today",
+    title: "DotTech Solutions | Innovative. Solve. Scale.",
     description:
       "Enterprise-grade software development, AI solutions, and digital transformation services.",
     creator: "@dottechsolutions",
