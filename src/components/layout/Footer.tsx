@@ -104,9 +104,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6 border-t border-white/10">
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-            <p className="text-slate-500 text-sm">
-              © {currentYear} DotTech Solutions. All rights reserved.
-            </p>
+            <div className="flex flex-col items-center sm:items-start gap-1">
+              <p className="text-slate-500 text-sm">
+                © {currentYear} DotTech Solutions. All rights reserved.
+              </p>
+              <p className="text-xs text-slate-400 font-medium tracking-wide">
+                MSME: UDYAM-TN-32-0110164
+              </p>
+            </div>
             {/* Visitor Counter Badge */}
             <div 
               className="flex items-center justify-center bg-white/5 rounded-xl px-3.5 py-1.5 border border-white/10 hover:bg-white/10 hover:border-blue-500/50 transition-all duration-300 w-full sm:w-auto shadow-sm backdrop-blur-md" 
