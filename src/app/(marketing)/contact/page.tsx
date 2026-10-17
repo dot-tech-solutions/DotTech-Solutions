@@ -62,11 +62,16 @@ export default function ContactPage() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+<<<<<<< HEAD
   const handleSubmit = async (e: React.FormEvent) => {
+=======
+  const handleSubmit = (e: React.FormEvent) => {
+>>>>>>> a08e5e785187acac627721fea1433fc7043495de
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMsg("");
 
+<<<<<<< HEAD
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -89,6 +94,29 @@ export default function ContactPage() {
     } finally {
       setIsSubmitting(false);
     }
+=======
+    const gmailUrl = getGmailUrl();
+
+    // 1. Immediately open Gmail composer in synchronous event handler so it's NEVER blocked by popup blocker
+    try {
+      window.open(gmailUrl, "_blank");
+    } catch (err) {
+      console.warn("Popup window open note:", err);
+    }
+
+    // 2. Silently record/send to API route in background
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    }).catch(() => {});
+
+    // 3. Directly show success confirmation
+    setSubmitted(true);
+    setIsSubmitting(false);
+>>>>>>> a08e5e785187acac627721fea1433fc7043495de
   };
 
   const services = [
@@ -226,6 +254,7 @@ export default function ContactPage() {
                   <div className="w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-200 flex items-center justify-center mb-6">
                     <CheckCircle className="w-10 h-10 text-emerald-600" />
                   </div>
+<<<<<<< HEAD
                   <h3 className="text-3xl font-black text-slate-900 mb-3">Message Sent Successfully!</h3>
                   <p className="text-slate-600 max-w-md mb-6 text-sm sm:text-base leading-relaxed">
                     Thank you, <strong className="text-slate-900">{form.name}</strong>! Your inquiry has been sent directly to <span className="text-blue-600 font-bold">{RECIPIENT_EMAIL}</span>. We will review your project details and respond within 24 hours.
@@ -243,6 +272,39 @@ export default function ContactPage() {
                       Send Another Message
                     </button>
                     <Link href="/" className="btn-brand text-sm py-3 px-6 flex items-center gap-1.5">
+=======
+                  <h3 className="text-3xl font-black text-slate-900 mb-3">Message Ready to Send!</h3>
+                  <p className="text-slate-600 max-w-md mb-6 text-sm sm:text-base leading-relaxed">
+                    We&apos;ve prepared your inquiry directly for <span className="text-blue-600 font-bold">info.dottechsolutions@gmail.com</span>.
+                    If your Gmail window didn&apos;t open automatically, click below:
+                  </p>
+
+                  <div className="flex flex-wrap justify-center gap-3 mb-8 w-full max-w-md">
+                    <a
+                      href={getGmailUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-brand text-sm py-3 px-6 flex items-center gap-2 shadow-lg shadow-blue-500/25 w-full sm:w-auto justify-center"
+                    >
+                      <Mail className="w-4 h-4" />
+                      Open in Gmail to Send
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={getMailtoUrl()}
+                      className="btn-ghost text-sm py-3 px-6 flex items-center gap-2 border border-slate-300 bg-white/80 w-full sm:w-auto justify-center"
+                    >
+                      Default Mail App
+                    </a>
+                  </div>
+
+                  <div className="flex gap-4">
+                    <button onClick={() => { setSubmitted(false); setStep(1); setForm({ name: "", email: "", company: "", phone: "", service: "", budget: "", message: "" }); }}
+                      className="btn-ghost text-sm">
+                      Send Another
+                    </button>
+                    <Link href="/" className="btn-brand text-sm flex items-center gap-1.5">
+>>>>>>> a08e5e785187acac627721fea1433fc7043495de
                       Back to Home <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </div>
@@ -362,6 +424,7 @@ export default function ContactPage() {
 
                         {errorMsg && (
                           <div className="bg-red-500/10 text-red-600 p-4 rounded-xl text-sm font-medium border border-red-200">
+<<<<<<< HEAD
                             <p className="font-semibold mb-1">Failed to send message:</p>
                             <p className="text-xs text-red-700 mb-2">{errorMsg}</p>
                             <a
@@ -373,6 +436,9 @@ export default function ContactPage() {
                               Click here to open in Gmail manually instead
                               <ExternalLink className="w-3 h-3" />
                             </a>
+=======
+                            {errorMsg}
+>>>>>>> a08e5e785187acac627721fea1433fc7043495de
                           </div>
                         )}
 
@@ -383,6 +449,7 @@ export default function ContactPage() {
                             disabled={!form.message.trim() || isSubmitting}
                             className="btn-brand flex-[2] flex items-center justify-center gap-2 py-4 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/25"
                           >
+<<<<<<< HEAD
                             {isSubmitting ? (
                               <>
                                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-1" />
@@ -394,6 +461,10 @@ export default function ContactPage() {
                                 Send Message
                               </>
                             )}
+=======
+                            <Mail className="w-5 h-5 mr-1" />
+                            Send to {RECIPIENT_EMAIL}
+>>>>>>> a08e5e785187acac627721fea1433fc7043495de
                           </button>
                         </div>
 
@@ -412,7 +483,11 @@ export default function ContactPage() {
                             className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold transition-colors"
                           >
                             <Mail className="w-3.5 h-3.5" />
+<<<<<<< HEAD
                             Or open in Gmail directly
+=======
+                            Direct Gmail Compose ({RECIPIENT_EMAIL})
+>>>>>>> a08e5e785187acac627721fea1433fc7043495de
                             <ExternalLink className="w-3 h-3" />
                           </a>
                         </div>
