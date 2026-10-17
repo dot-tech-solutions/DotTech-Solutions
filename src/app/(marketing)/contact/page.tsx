@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Mail, Phone, MessageCircle,
-  ArrowRight, Send, CheckCircle, ChevronRight, Clock, Zap
+  ArrowRight, Send, CheckCircle, ChevronRight, Clock, Zap, ExternalLink
 } from "lucide-react";
 import { Instagram, Linkedin } from "@/components/ui/SocialIcons";
 
@@ -19,37 +19,75 @@ export default function ContactPage() {
     service: "", budget: "", message: "",
   });
 
+  const RECIPIENT_EMAIL = "info.dottechsolutions@gmail.com";
+
+  const getEmailSubject = () => {
+    const serviceName = form.service ? ` - ${form.service}` : "";
+    return `Project Inquiry: ${form.name || "Client"}${serviceName}`;
+  };
+
+  const getEmailBody = () => {
+    return [
+      `Hello DotTech Solutions Team,`,
+      ``,
+      `I would like to inquire about a project:`,
+      `• Name: ${form.name || "N/A"}`,
+      `• Email: ${form.email || "N/A"}`,
+      `• Phone: ${form.phone || "N/A"}`,
+      `• Company: ${form.company || "N/A"}`,
+      `• Service Needed: ${form.service || "N/A"}`,
+      `• Estimated Budget: ${form.budget || "N/A"}`,
+      ``,
+      `Project Description:`,
+      form.message || "(No description provided)",
+      ``,
+      `Regards,`,
+      form.name || "Client",
+    ].join("\n");
+  };
+
+  const getGmailUrl = () => {
+    const subject = encodeURIComponent(getEmailSubject());
+    const body = encodeURIComponent(getEmailBody());
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${RECIPIENT_EMAIL}&su=${subject}&body=${body}`;
+  };
+
+  const getMailtoUrl = () => {
+    const subject = encodeURIComponent(getEmailSubject());
+    const body = encodeURIComponent(getEmailBody());
+    return `mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMsg("");
 
+    const gmailUrl = getGmailUrl();
+
+    // 1. Immediately open Gmail composer in synchronous event handler so it's NEVER blocked by popup blocker
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setSubmitted(true);
-      } else {
-        setErrorMsg(data.message || "Failed to send message. Please try again.");
-      }
+      window.open(gmailUrl, "_blank");
     } catch (err) {
-      console.error("Submission error:", err);
-      setErrorMsg("Network error. Unable to send your message. Please try again.");
-    } finally {
-      setIsSubmitting(false);
+      console.warn("Popup window open note:", err);
     }
+
+    // 2. Silently record/send to API route in background
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    }).catch(() => {});
+
+    // 3. Directly show success confirmation
+    setSubmitted(true);
+    setIsSubmitting(false);
   };
 
   const services = [
@@ -183,15 +221,35 @@ export default function ContactPage() {
             <div className="lg:col-span-3">
               {submitted ? (
                 /* Success State */
-                <div className="liquid-glass p-12 text-center h-full flex flex-col items-center justify-center rounded-3xl border border-emerald-200/60 shadow-xl">
+                <div className="liquid-glass p-8 sm:p-12 text-center h-full flex flex-col items-center justify-center rounded-3xl border border-emerald-200/60 shadow-xl animate-fade-in">
                   <div className="w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-200 flex items-center justify-center mb-6">
                     <CheckCircle className="w-10 h-10 text-emerald-600" />
                   </div>
-                  <h3 className="text-3xl font-black text-slate-900 mb-4">Message Received!</h3>
-                  <p className="text-slate-600 max-w-sm mb-8 text-base leading-relaxed">
-                    Thank you for contacting us. We&apos;ve received your request and will follow up at{" "}
-                    <span className="text-blue-600 font-semibold">{form.email}</span> shortly.
+                  <h3 className="text-3xl font-black text-slate-900 mb-3">Message Ready to Send!</h3>
+                  <p className="text-slate-600 max-w-md mb-6 text-sm sm:text-base leading-relaxed">
+                    We&apos;ve prepared your inquiry directly for <span className="text-blue-600 font-bold">info.dottechsolutions@gmail.com</span>.
+                    If your Gmail window didn&apos;t open automatically, click below:
                   </p>
+
+                  <div className="flex flex-wrap justify-center gap-3 mb-8 w-full max-w-md">
+                    <a
+                      href={getGmailUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-brand text-sm py-3 px-6 flex items-center gap-2 shadow-lg shadow-blue-500/25 w-full sm:w-auto justify-center"
+                    >
+                      <Mail className="w-4 h-4" />
+                      Open in Gmail to Send
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                    <a
+                      href={getMailtoUrl()}
+                      className="btn-ghost text-sm py-3 px-6 flex items-center gap-2 border border-slate-300 bg-white/80 w-full sm:w-auto justify-center"
+                    >
+                      Default Mail App
+                    </a>
+                  </div>
+
                   <div className="flex gap-4">
                     <button onClick={() => { setSubmitted(false); setStep(1); setForm({ name: "", email: "", company: "", phone: "", service: "", budget: "", message: "" }); }}
                       className="btn-ghost text-sm">
@@ -326,17 +384,31 @@ export default function ContactPage() {
                           <button
                             type="submit"
                             disabled={!form.message.trim() || isSubmitting}
-                            className="btn-brand flex-[2] flex items-center justify-center gap-2 py-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="btn-brand flex-[2] flex items-center justify-center gap-2 py-4 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-blue-500/25"
                           >
-                            {isSubmitting ? (
-                              "Sending message..."
-                            ) : (
-                              <>
-                                <Send className="w-5 h-5 mr-1" />
-                                Send Message
-                              </>
-                            )}
+                            <Mail className="w-5 h-5 mr-1" />
+                            Send to {RECIPIENT_EMAIL}
                           </button>
+                        </div>
+
+                        {/* Direct Gmail Send Option */}
+                        <div className="pt-1 text-center">
+                          <a
+                            href={form.message.trim() ? getGmailUrl() : undefined}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              if (!form.message.trim()) {
+                                e.preventDefault();
+                                setErrorMsg("Please describe your project first.");
+                              }
+                            }}
+                            className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold transition-colors"
+                          >
+                            <Mail className="w-3.5 h-3.5" />
+                            Direct Gmail Compose ({RECIPIENT_EMAIL})
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
                         </div>
                       </div>
                     )}
