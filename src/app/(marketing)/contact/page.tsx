@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Mail, Phone, MessageCircle,
-  ArrowRight, Send, CheckCircle, Clock, Zap, ExternalLink, MapPin, Navigation
+  ArrowRight, Send, CheckCircle, Clock, Zap, MapPin, Navigation
 } from "lucide-react";
 
 /* ======================== PAGE ======================== */
@@ -20,43 +20,6 @@ export default function ContactPage() {
 
   const RECIPIENT_EMAIL = "info.dottechsolutions@gmail.com";
 
-  const getEmailSubject = () => {
-    const serviceName = form.service ? ` - ${form.service}` : "";
-    return `Project Inquiry: ${form.name || "Client"}${serviceName}`;
-  };
-
-  const getEmailBody = () => {
-    return [
-      `Hello DotTech Solutions Team,`,
-      ``,
-      `I would like to inquire about a project:`,
-      `• Name: ${form.name || "N/A"}`,
-      `• Email: ${form.email || "N/A"}`,
-      `• Phone: ${form.phone || "N/A"}`,
-      `• Company: ${form.company || "N/A"}`,
-      `• Service Needed: ${form.service || "N/A"}`,
-      `• Estimated Budget: ${form.budget || "N/A"}`,
-      ``,
-      `Project Description:`,
-      form.message || "(No description provided)",
-      ``,
-      `Regards,`,
-      form.name || "Client",
-    ].join("\n");
-  };
-
-  const getGmailUrl = () => {
-    const subject = encodeURIComponent(getEmailSubject());
-    const body = encodeURIComponent(getEmailBody());
-    return `https://mail.google.com/mail/?view=cm&fs=1&to=${RECIPIENT_EMAIL}&su=${subject}&body=${body}`;
-  };
-
-  const getMailtoUrl = () => {
-    const subject = encodeURIComponent(getEmailSubject());
-    const body = encodeURIComponent(getEmailBody());
-    return `mailto:${RECIPIENT_EMAIL}?subject=${subject}&body=${body}`;
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -66,29 +29,27 @@ export default function ContactPage() {
     setIsSubmitting(true);
     setErrorMsg("");
 
-    // Always open Gmail compose immediately — this guarantees delivery
-    // regardless of SMTP configuration
-    const gmailWindow = window.open(getGmailUrl(), "_blank");
-
-    // Also attempt SMTP in background silently
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-    } catch {
-      // SMTP failure is silent — Gmail compose is the primary delivery
-    }
 
-    // Show success regardless — Gmail window was opened
-    if (!gmailWindow) {
-      // Popup was blocked — show the Gmail link prominently
-      setErrorMsg("__popup_blocked__");
-    } else {
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "Failed to send. Please try again.");
+      }
+
       setSubmitted(true);
+    } catch (err: unknown) {
+      const error = err as { message?: string };
+      console.error("Form submission error:", err);
+      setErrorMsg(error.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-    setIsSubmitting(false);
   };
 
   const services = [
@@ -217,31 +178,9 @@ export default function ContactPage() {
                     <CheckCircle className="w-10 h-10 text-emerald-600" />
                   </div>
                   <h3 className="text-3xl font-black text-slate-900 mb-3">Message Sent!</h3>
-                  <p className="text-slate-600 max-w-md mb-2 text-sm sm:text-base leading-relaxed">
-                    Thank you, <strong className="text-slate-900">{form.name}</strong>! Your Gmail has opened with all details pre-filled.
+                  <p className="text-slate-600 max-w-md mb-6 text-sm sm:text-base leading-relaxed">
+                    Thank you, <strong className="text-slate-900">{form.name}</strong>! Your inquiry has been delivered to our team at <span className="text-blue-600 font-bold">{RECIPIENT_EMAIL}</span>. We&apos;ll get back to you within 24 hours.
                   </p>
-                  <p className="text-slate-500 text-xs max-w-sm mb-6">
-                    If Gmail didn&apos;t open, click below — your message details are ready to send.
-                  </p>
-
-                  <div className="flex flex-wrap justify-center gap-3 mb-5">
-                    <a
-                      href={getGmailUrl()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-brand text-sm py-3 px-6 flex items-center gap-2"
-                    >
-                      <Mail className="w-4 h-4" />
-                      Open Gmail Again
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href={getMailtoUrl()}
-                      className="btn-ghost text-sm py-3 px-5 flex items-center gap-2"
-                    >
-                      Use Default Mail App
-                    </a>
-                  </div>
 
                   <div className="flex flex-wrap justify-center gap-3">
                     <button
@@ -250,13 +189,12 @@ export default function ContactPage() {
                         setStep(1);
                         setForm({ name: "", email: "", company: "", phone: "", service: "", budget: "", message: "" });
                       }}
-                      className="text-xs text-slate-400 hover:text-slate-600 transition-colors"
+                      className="btn-ghost text-sm py-3 px-6"
                     >
-                      Submit another inquiry
+                      Send Another Message
                     </button>
-                    <span className="text-slate-200">|</span>
-                    <Link href="/" className="text-xs text-slate-400 hover:text-blue-600 transition-colors flex items-center gap-1">
-                      Back to Home <ArrowRight className="w-3 h-3" />
+                    <Link href="/" className="btn-brand text-sm py-3 px-6 flex items-center gap-1.5">
+                      Back to Home <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </div>
                 </div>
