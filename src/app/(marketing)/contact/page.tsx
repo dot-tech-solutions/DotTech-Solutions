@@ -4,9 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Mail, Phone, MessageCircle,
-  ArrowRight, Send, CheckCircle, ChevronRight, Clock, Zap, ExternalLink, MapPin, Navigation
+  ArrowRight, Send, CheckCircle, Clock, Zap, ExternalLink, MapPin, Navigation
 } from "lucide-react";
-import { Instagram, Linkedin } from "@/components/ui/SocialIcons";
 
 /* ======================== PAGE ======================== */
 export default function ContactPage() {
@@ -130,100 +129,81 @@ export default function ContactPage() {
 
             {/* ======== LEFT: Contact Info ======== */}
             <div className="lg:col-span-2 space-y-4">
-              {/* Contact Cards */}
+
+              {/* Our Office */}
+              <a
+                href="https://maps.app.goo.gl/sKebuZmM4bCR5Dy16"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-5 bg-white rounded-2xl px-5 py-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow group"
+              >
+                <div className="w-1 self-stretch rounded-full bg-blue-500 flex-shrink-0" />
+                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-blue-500" />
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 text-base mb-1">Our Office</div>
+                  <div className="text-sm text-slate-500 leading-relaxed">
+                    Board Apartment, Srivilliputhur<br />
+                    Tamil Nadu, India<br />
+                    Serving Clients Anywhere
+                  </div>
+                </div>
+              </a>
+
+              {/* Drop Us a Line */}
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=info.dottechsolutions@gmail.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="liquid-card-hover p-6 flex items-center gap-4 group rounded-3xl"
+                className="flex items-center gap-5 bg-white rounded-2xl px-5 py-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow group"
               >
-                <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-200/60 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                  <Mail className="w-6 h-6 text-blue-600 group-hover:text-white" />
+                <div className="w-1 self-stretch rounded-full bg-emerald-500 flex-shrink-0" />
+                <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-5 h-5 text-emerald-500" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Email Us</div>
-                  <div className="text-sm font-bold text-slate-900">info.dottechsolutions@gmail.com</div>
-                  <div className="text-xs text-slate-500 mt-1">We reply within 24 hours</div>
+                  <div className="font-bold text-slate-900 text-base mb-1">Drop Us a Line</div>
+                  <div className="text-sm text-slate-500 leading-relaxed">
+                    info.dottechsolutions@gmail.com<br />
+                    +91 90250 88044
+                  </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-slate-400 ml-auto group-hover:text-blue-600 transition-colors" />
               </a>
 
-              <a
-                href="tel:+919025088044"
-                className="liquid-card-hover p-6 flex items-center gap-4 group rounded-3xl"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-200/60 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-                  <Phone className="w-6 h-6 text-purple-600 group-hover:text-white" />
-                </div>
-                <div>
-                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Call Us</div>
-                  <div className="text-sm font-bold text-slate-900">+91 90250 88044</div>
-                  <div className="text-xs text-slate-500 mt-1">Mon–Sat, 9 AM – 7 PM IST</div>
-                </div>
-                <ChevronRight className="w-5 h-5 text-slate-400 ml-auto group-hover:text-purple-600 transition-colors" />
-              </a>
-
+              {/* Let's Talk */}
               <a
                 href="https://wa.me/919025088044"
-                target="_blank" rel="noopener noreferrer"
-                className="liquid-card-hover p-6 flex items-center gap-4 group rounded-3xl"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-5 bg-white rounded-2xl px-5 py-5 shadow-sm border border-slate-100 hover:shadow-md transition-shadow group"
               >
-                <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-200/60 flex items-center justify-center flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                  <MessageCircle className="w-6 h-6 text-emerald-600 group-hover:text-white" />
+                <div className="w-1 self-stretch rounded-full bg-amber-400 flex-shrink-0" />
+                <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center flex-shrink-0">
+                  <MessageCircle className="w-5 h-5 text-amber-500" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">WhatsApp</div>
-                  <div className="text-sm font-bold text-slate-900">+91 90250 88044</div>
-                  <div className="text-xs text-slate-500 mt-1">Instant chat &amp; discussions</div>
+                  <div className="font-bold text-slate-900 text-base mb-1">Let&apos;s Talk</div>
+                  <div className="text-sm text-slate-500 leading-relaxed">
+                    Reach out via WhatsApp or the form<br />
+                    We get back within 4 hours
+                  </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-slate-400 ml-auto group-hover:text-emerald-600 transition-colors" />
               </a>
 
-              {/* Social Media Cards */}
-              <div className="grid grid-cols-2 gap-4">
-                <a
-                  href="https://www.instagram.com/dot_techsolutions?igsh=MXNmZHo3cWo1dGZsNQ=="
-                  target="_blank" rel="noopener noreferrer"
-                  className="liquid-card-hover p-5 flex flex-col items-center text-center gap-2 group rounded-2xl"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-pink-500/10 flex items-center justify-center group-hover:bg-pink-100 transition-colors">
-                    <Instagram className="w-5 h-5 text-pink-600" />
+              {/* Working Hours */}
+              <div className="flex items-center gap-5 bg-white rounded-2xl px-5 py-5 shadow-sm border border-slate-100">
+                <div className="w-1 self-stretch rounded-full bg-blue-400 flex-shrink-0" />
+                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 text-blue-500" />
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 text-base mb-1">Working Hours</div>
+                  <div className="text-sm text-slate-500 leading-relaxed">
+                    Mon – Sat: 9:00 AM – 7:00 PM IST<br />
+                    Sun: Closed
                   </div>
-                  <div>
-                    <div className="text-sm font-bold text-slate-900">Instagram</div>
-                    <div className="text-xs text-slate-500">@dot_techsolutions</div>
-                  </div>
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/dottechsolutions-in/"
-                  target="_blank" rel="noopener noreferrer"
-                  className="liquid-card-hover p-5 flex flex-col items-center text-center gap-2 group rounded-2xl"
-                >
-                  <div className="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:bg-blue-100 transition-colors">
-                    <Linkedin className="w-5 h-5 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-bold text-slate-900">LinkedIn</div>
-                    <div className="text-xs text-slate-500">dottechsolutions</div>
-                  </div>
-                </a>
-              </div>
-
-              {/* Response Time Info */}
-              <div className="liquid-glass p-5 rounded-2xl flex items-center gap-3 border border-blue-200/50">
-                <MapPin className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                <p className="text-xs sm:text-sm text-slate-700">
-                  <span className="font-bold text-slate-900">Board Apartment, Srivilliputhur</span><br />
-                  <span className="text-slate-500">Tamil Nadu, India</span>
-                </p>
-              </div>
-
-              {/* Response Time Info */}
-              <div className="liquid-glass p-5 rounded-2xl flex items-center gap-3 border border-blue-200/50">
-                <Clock className="w-5 h-5 text-blue-600 flex-shrink-0" />
-                <p className="text-xs sm:text-sm text-slate-700">
-                  Average response time is <span className="text-blue-700 font-bold">under 4 hours</span> during business hours.
-                </p>
+                </div>
               </div>
 
             </div>
@@ -477,78 +457,47 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      {/* ==================== OFFICE LOCATION ==================== */}
+      {/* ==================== OFFICE LOCATION MAP ==================== */}
       <section className="py-16 relative z-10">
         <div className="section-container">
-          {/* Section Header */}
           <div className="text-center mb-10">
             <div className="liquid-pill mb-4 inline-flex">
               <MapPin className="w-3.5 h-3.5" />
-              Our Office
+              Find Us
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">
-              Visit Us <span className="gradient-text">In Person</span>
+              Our <span className="gradient-text">Location</span>
             </h2>
             <p className="text-slate-500 text-sm sm:text-base max-w-md mx-auto">
-              We&apos;re based in Tamil Nadu, India. Feel free to drop by or schedule a visit.
+              Click the map to open directions in Google Maps.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-
-            {/* Address Card */}
-            <div className="space-y-4">
-              <div className="liquid-glass p-6 rounded-3xl border border-white/90 shadow-lg">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-200/60 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Office Address</div>
-                    <div className="text-sm font-bold text-slate-900 leading-relaxed">
-                      Board Apartment,<br />
-                      Srivilliputhur,<br />
-                      Tamil Nadu, India
-                    </div>
-                  </div>
-                </div>
-
-                <div className="border-t border-slate-100 pt-4 space-y-3">
-                  <div className="flex items-center gap-3 text-sm text-slate-600">
-                    <Clock className="w-4 h-4 text-slate-400 flex-shrink-0" />
-                    <span>Mon – Sat &nbsp;|&nbsp; 9:00 AM – 7:00 PM IST</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Directions Button */}
-              <a
-                href="https://maps.app.goo.gl/sKebuZmM4bCR5Dy16"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-brand w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl shadow-lg shadow-blue-500/20"
-              >
-                <Navigation className="w-4 h-4" />
-                Get Directions
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+          {/* Clickable Map */}
+          <a
+            href="https://maps.app.goo.gl/sKebuZmM4bCR5Dy16"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl group"
+            style={{ height: "420px" }}
+            aria-label="Open DotTech Solutions office location in Google Maps"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.912345!2d77.5354557!3d9.4824365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06e97797be0eeb%3A0xfa4f4dc501eac714!2sBoard%20Apartment!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0, pointerEvents: "none" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="DotTech Solutions Office Location"
+            />
+            {/* Overlay: "Open in Maps" badge — matches reference design */}
+            <div className="absolute top-4 left-4 flex items-center gap-2 bg-white text-slate-800 text-sm font-semibold px-4 py-2 rounded-xl shadow-md group-hover:shadow-lg transition-shadow">
+              <Navigation className="w-4 h-4 text-blue-600" />
+              Open in Maps
+              <ExternalLink className="w-3.5 h-3.5 text-blue-500" />
             </div>
-
-            {/* Embedded Google Map */}
-            <div className="lg:col-span-2 rounded-3xl overflow-hidden border border-white/90 shadow-xl" style={{ height: "380px" }}>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.4!2d77.5329094!3d9.4824365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06e97797be0eeb%3A0xfa4f4dc501eac714!2sboard%20apartment!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="DotTech Solutions Office Location"
-              />
-            </div>
-
-          </div>
+          </a>
         </div>
       </section>
 
