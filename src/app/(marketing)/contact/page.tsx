@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Mail, Phone, MessageCircle,
-  ArrowRight, Send, CheckCircle, ChevronRight, Clock, Zap, ExternalLink
+  ArrowRight, Send, CheckCircle, ChevronRight, Clock, Zap, ExternalLink, MapPin, Navigation
 } from "lucide-react";
 import { Instagram, Linkedin } from "@/components/ui/SocialIcons";
 
@@ -207,6 +207,15 @@ export default function ContactPage() {
                     <div className="text-xs text-slate-500">dottechsolutions</div>
                   </div>
                 </a>
+              </div>
+
+              {/* Response Time Info */}
+              <div className="liquid-glass p-5 rounded-2xl flex items-center gap-3 border border-blue-200/50">
+                <MapPin className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                <p className="text-xs sm:text-sm text-slate-700">
+                  <span className="font-bold text-slate-900">Board Apartment, Srivilliputhur</span><br />
+                  <span className="text-slate-500">Tamil Nadu, India</span>
+                </p>
               </div>
 
               {/* Response Time Info */}
@@ -468,6 +477,81 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      {/* ==================== OFFICE LOCATION ==================== */}
+      <section className="py-16 relative z-10">
+        <div className="section-container">
+          {/* Section Header */}
+          <div className="text-center mb-10">
+            <div className="liquid-pill mb-4 inline-flex">
+              <MapPin className="w-3.5 h-3.5" />
+              Our Office
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 mb-3">
+              Visit Us <span className="gradient-text">In Person</span>
+            </h2>
+            <p className="text-slate-500 text-sm sm:text-base max-w-md mx-auto">
+              We&apos;re based in Tamil Nadu, India. Feel free to drop by or schedule a visit.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+            {/* Address Card */}
+            <div className="space-y-4">
+              <div className="liquid-glass p-6 rounded-3xl border border-white/90 shadow-lg">
+                <div className="flex items-start gap-4 mb-5">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-200/60 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <div className="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">Office Address</div>
+                    <div className="text-sm font-bold text-slate-900 leading-relaxed">
+                      Board Apartment,<br />
+                      Srivilliputhur,<br />
+                      Tamil Nadu, India
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-slate-100 pt-4 space-y-3">
+                  <div className="flex items-center gap-3 text-sm text-slate-600">
+                    <Clock className="w-4 h-4 text-slate-400 flex-shrink-0" />
+                    <span>Mon – Sat &nbsp;|&nbsp; 9:00 AM – 7:00 PM IST</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Directions Button */}
+              <a
+                href="https://maps.app.goo.gl/sKebuZmM4bCR5Dy16"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-brand w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl shadow-lg shadow-blue-500/20"
+              >
+                <Navigation className="w-4 h-4" />
+                Get Directions
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            {/* Embedded Google Map */}
+            <div className="lg:col-span-2 rounded-3xl overflow-hidden border border-white/90 shadow-xl" style={{ height: "380px" }}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3936.4!2d77.5329094!3d9.4824365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06e97797be0eeb%3A0xfa4f4dc501eac714!2sboard%20apartment!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="DotTech Solutions Office Location"
+              />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
