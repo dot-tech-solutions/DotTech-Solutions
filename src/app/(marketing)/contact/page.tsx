@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   Mail, Phone, MessageCircle,
-  ArrowRight, Send, CheckCircle, Clock, Zap, MapPin, Navigation
+  ArrowRight, Send, CheckCircle, Clock, Zap, MapPin, Navigation, ExternalLink
 } from "lucide-react";
 
 /* ======================== PAGE ======================== */
@@ -312,19 +312,9 @@ export default function ContactPage() {
                         </div>
 
                         {errorMsg && (
-                          <div className="bg-blue-50 text-blue-800 p-4 rounded-xl text-sm font-medium border border-blue-200">
-                            <p className="font-semibold mb-2">📧 Click below to send your message:</p>
-                            <a
-                              href={getGmailUrl()}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 bg-blue-600 text-white text-xs font-semibold px-4 py-2.5 rounded-lg hover:bg-blue-700 transition-colors w-full justify-center"
-                            >
-                              <Mail className="w-4 h-4" />
-                              Open Gmail &amp; Send Now
-                              <ExternalLink className="w-3 h-3" />
-                            </a>
-                            <p className="text-xs text-blue-600 mt-2 text-center">Your details are pre-filled — just click Send in Gmail</p>
+                          <div className="bg-red-50 text-red-700 p-4 rounded-xl text-sm font-medium border border-red-200">
+                            <p className="font-semibold mb-1">⚠️ Failed to send message</p>
+                            <p className="text-xs text-red-600">{errorMsg}</p>
                           </div>
                         )}
 
@@ -347,26 +337,6 @@ export default function ContactPage() {
                               </>
                             )}
                           </button>
-                        </div>
-
-                        {/* Direct Gmail Send Option */}
-                        <div className="pt-1 text-center">
-                          <a
-                            href={form.message.trim() ? getGmailUrl() : undefined}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => {
-                              if (!form.message.trim()) {
-                                e.preventDefault();
-                                setErrorMsg("Please describe your project first.");
-                              }
-                            }}
-                            className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold transition-colors"
-                          >
-                            <Mail className="w-3.5 h-3.5" />
-                            Or open in Gmail directly
-                            <ExternalLink className="w-3 h-3" />
-                          </a>
                         </div>
                       </div>
                     )}
