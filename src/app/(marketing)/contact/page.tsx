@@ -218,10 +218,10 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-3xl font-black text-slate-900 mb-3">Message Sent Successfully!</h3>
                   <p className="text-slate-600 max-w-md mb-6 text-sm sm:text-base leading-relaxed">
-                    Thank you, <strong className="text-slate-900">{form.name}</strong>! Your inquiry has been sent directly to <span className="text-blue-600 font-bold">{RECIPIENT_EMAIL}</span>. We will review your project details and respond within 24 hours.
+                    Thank you, <strong className="text-slate-900">{form.name}</strong>! Your inquiry has been delivered to <span className="text-blue-600 font-bold">{RECIPIENT_EMAIL}</span>. We&apos;ll respond within 24 hours.
                   </p>
 
-                  <div className="flex flex-wrap justify-center gap-4">
+                  <div className="flex flex-wrap justify-center gap-3 mb-4">
                     <button
                       onClick={() => {
                         setSubmitted(false);
@@ -236,6 +236,16 @@ export default function ContactPage() {
                       Back to Home <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </div>
+                  <a
+                    href={getGmailUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-600 transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    Also send via Gmail as backup
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </div>
               ) : (
                 <div className="liquid-glass p-8 sm:p-10 rounded-3xl border border-white/90 shadow-2xl">
@@ -353,14 +363,16 @@ export default function ContactPage() {
                         {errorMsg && (
                           <div className="bg-red-500/10 text-red-600 p-4 rounded-xl text-sm font-medium border border-red-200">
                             <p className="font-semibold mb-1">Failed to send message:</p>
-                            <p className="text-xs text-red-700 mb-2">{errorMsg}</p>
+                            <p className="text-xs text-red-700 mb-3">{errorMsg}</p>
+                            <p className="text-xs text-slate-600 mb-2">No worries — you can send directly via Gmail instead:</p>
                             <a
                               href={getGmailUrl()}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:underline font-semibold"
+                              className="inline-flex items-center gap-1.5 bg-blue-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                             >
-                              Click here to open in Gmail manually instead
+                              <Mail className="w-3.5 h-3.5" />
+                              Open Gmail &amp; Send Now
                               <ExternalLink className="w-3 h-3" />
                             </a>
                           </div>
