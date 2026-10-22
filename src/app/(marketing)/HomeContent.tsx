@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -73,46 +73,6 @@ const processSteps = [
 ];
 
 /* ===========================
-   HELPER COMPONENTS
-   =========================== */
-
-function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
-  const started = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          let start = 0;
-          const duration = 2000;
-          const increment = value / (duration / 16);
-          const timer = setInterval(() => {
-            start += increment;
-            if (start >= value) {
-              setCount(value);
-              clearInterval(timer);
-            } else {
-              setCount(Math.floor(start));
-            }
-          }, 16);
-        }
-      },
-      { threshold: 0.5 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [value]);
-
-  return (
-    <div ref={ref} className="text-3xl sm:text-4xl font-black gradient-text mb-1 tracking-tight">
-      {count}{suffix}
-    </div>
-  );
-}
-
 /* ===========================
    MAIN HOME PAGE CONTENT
    =========================== */
@@ -159,22 +119,6 @@ export default function HomeContent() {
                 <Link href="/services" className="btn-ghost w-full sm:w-auto h-12 flex items-center justify-center">
                   Explore Services
                 </Link>
-              </div>
-
-              {/* Liquid Stat Glass Cards */}
-              <div className="grid grid-cols-3 gap-4 mt-12 pt-8 border-t border-slate-200/80 max-w-lg">
-                <div className="liquid-glass p-4 text-center rounded-2xl">
-                  <AnimatedCounter value={2} suffix="+" />
-                  <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Projects</div>
-                </div>
-                <div className="liquid-glass p-4 text-center rounded-2xl">
-                  <AnimatedCounter value={2} suffix="+" />
-                  <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Years Exp</div>
-                </div>
-                <div className="liquid-glass p-4 text-center rounded-2xl">
-                  <AnimatedCounter value={98} suffix="%" />
-                  <div className="text-xs font-bold text-slate-500 uppercase tracking-wider">Retention</div>
-                </div>
               </div>
             </div>
             
