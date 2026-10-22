@@ -222,7 +222,7 @@ export default function ContactPage() {
                   </div>
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/dottechsolutions/"
+                  href="https://www.linkedin.com/company/dottechsolutions-in/"
                   target="_blank" rel="noopener noreferrer"
                   className="liquid-card-hover p-5 flex flex-col items-center text-center gap-2 group rounded-2xl"
                 >

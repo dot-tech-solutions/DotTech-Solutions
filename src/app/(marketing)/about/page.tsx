@@ -90,7 +90,7 @@ export default function AboutPage() {
               Follow on Instagram
             </a>
             <a
-              href="https://www.linkedin.com/in/dottechsolutions/"
+              href="https://www.linkedin.com/company/dottechsolutions-in/"
               target="_blank" rel="noopener noreferrer"
               className="liquid-glass px-6 py-3 text-sm font-semibold text-slate-700 hover:text-blue-600 hover:border-blue-200 transition-all flex items-center gap-2"
             >

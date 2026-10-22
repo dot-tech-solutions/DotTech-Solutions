@@ -82,7 +82,7 @@ export default function RootLayout({
                 "Modern software development and AI solutions company.",
               sameAs: [
                 "https://www.instagram.com/dot_techsolutions",
-                "https://www.linkedin.com/in/dottechsolutions/",
+                "https://www.linkedin.com/company/dottechsolutions-in/",
               ],
               contactPoint: {
                 "@type": "ContactPoint",

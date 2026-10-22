@@ -131,7 +131,7 @@ export default function Footer() {
               <Instagram className="w-4 h-4" />
             </a>
             <a 
-              href="https://www.linkedin.com/in/dottechsolutions/" 
+              href="https://www.linkedin.com/company/dottechsolutions-in/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-[#0077B5] hover:text-white transition-all duration-300 shadow-sm"

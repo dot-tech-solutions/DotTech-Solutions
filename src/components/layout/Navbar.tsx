@@ -28,7 +28,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/dottechsolutions/",
+    href: "https://www.linkedin.com/company/dottechsolutions-in/",
     icon: Linkedin,
     color: "hover:text-blue-600",
   },
