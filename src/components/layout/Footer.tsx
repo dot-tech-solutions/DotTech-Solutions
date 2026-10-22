@@ -88,13 +88,13 @@ export default function Footer() {
             <h3 className="text-xl font-bold text-white mb-1">Subscribe to our newsletter</h3>
             <p className="text-slate-400 text-sm">Get the latest insights in modern software, cloud architecture, and AI.</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-3">
             <input 
               type="email" 
               placeholder="Enter your email" 
               className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-400 transition-colors placeholder:text-slate-400"
             />
-            <button className="btn-brand px-6 py-3 text-sm font-semibold flex items-center gap-2">
+            <button className="btn-brand px-6 py-3 text-sm font-semibold flex items-center justify-center gap-2 whitespace-nowrap">
               Subscribe
               <ArrowRight className="w-4 h-4" />
             </button>
