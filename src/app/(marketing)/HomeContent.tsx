@@ -209,9 +209,6 @@ export default function HomeContent() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {processSteps.map((step, idx) => (
               <div key={idx} className="liquid-glass p-7 rounded-2xl relative group overflow-hidden hover:border-blue-300/80 transition-all">
-                <div className="text-6xl font-black text-slate-200/60 absolute -top-2 -right-2 group-hover:text-blue-200/50 transition-colors pointer-events-none select-none">
-                  {step.num}
-                </div>
                 <div className="relative z-10 pt-2">
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed">{step.desc}</p>
