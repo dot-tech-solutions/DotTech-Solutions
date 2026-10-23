@@ -72,6 +72,63 @@ const processSteps = [
   { num: "06", title: "Support & Maintenance", desc: "Post-launch monitoring, updates, and optimization." },
 ];
 
+const projects = [
+  {
+    tag: "Shopping Website",
+    tagColor: "text-emerald-600",
+    borderColor: "border-emerald-400",
+    title: "E-Commerce Platform",
+    desc: "A modern online store with seamless checkout, inventory management, and payment gateway integration.",
+    gradient: "from-emerald-100 to-teal-50",
+    icon: "🛒",
+  },
+  {
+    tag: "Software Solution",
+    tagColor: "text-blue-600",
+    borderColor: "border-blue-400",
+    title: "SaaS Dashboard",
+    desc: "Analytics dashboard for a fintech startup — real-time data, role-based access, and custom reporting.",
+    gradient: "from-blue-100 to-cyan-50",
+    icon: "📊",
+  },
+  {
+    tag: "Landing Page",
+    tagColor: "text-amber-600",
+    borderColor: "border-amber-400",
+    title: "Restaurant Website",
+    desc: "Elegant site with online ordering system, menu management, and reservation booking.",
+    gradient: "from-amber-100 to-orange-50",
+    icon: "🍽️",
+  },
+  {
+    tag: "Chatbot Development",
+    tagColor: "text-purple-600",
+    borderColor: "border-purple-400",
+    title: "AI Chatbot",
+    desc: "LLM-powered customer support bot with FAQ automation, lead capture, and CRM integration.",
+    gradient: "from-purple-100 to-violet-50",
+    icon: "🤖",
+  },
+  {
+    tag: "Website Redesign",
+    tagColor: "text-rose-600",
+    borderColor: "border-rose-400",
+    title: "Portfolio Design & Redesign",
+    desc: "Complete brand refresh and redesign for a developer portfolio with modern UI and smooth animations.",
+    gradient: "from-rose-100 to-pink-50",
+    icon: "🎨",
+  },
+  {
+    tag: "Full Stack",
+    tagColor: "text-indigo-600",
+    borderColor: "border-indigo-400",
+    title: "Learning Platform",
+    desc: "Full-stack edtech platform with video courses, progress tracking, quizzes, and certificate generation.",
+    gradient: "from-indigo-100 to-blue-50",
+    icon: "🎓",
+  },
+];
+
 /* ===========================
 /* ===========================
    MAIN HOME PAGE CONTENT
@@ -187,6 +244,58 @@ export default function HomeContent() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== FEATURED PROJECTS ==================== */}
+      <section className="py-24 relative z-10">
+        <div className="section-container">
+          <div className="text-center mb-16 max-w-3xl mx-auto">
+            <span className="liquid-pill mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              Our Work
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+              Featured <span className="gradient-text">Projects</span>
+            </h2>
+            <p className="text-slate-600 text-lg">
+              A glimpse into the products we&apos;ve designed, built, and launched for clients across industries.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project, idx) => (
+              <div
+                key={idx}
+                className="liquid-card-hover rounded-3xl overflow-hidden group flex flex-col"
+              >
+                {/* Preview area */}
+                <div className={`h-44 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                  <span className="text-7xl select-none">{project.icon}</span>
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300" />
+                </div>
+
+                {/* Content */}
+                <div className={`p-6 flex flex-col flex-1 border-t-2 ${project.borderColor}`}>
+                  <span className={`text-xs font-black uppercase tracking-widest ${project.tagColor} mb-2`}>
+                    {project.tag}
+                  </span>
+                  <h3 className="font-black text-slate-900 text-lg mb-2 leading-snug">{project.title}</h3>
+                  <p className="text-sm text-slate-500 leading-relaxed flex-1">{project.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/contact"
+              className="btn-brand inline-flex items-center gap-2 py-4 px-8 text-base shadow-xl"
+            >
+              Start Your Project
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
