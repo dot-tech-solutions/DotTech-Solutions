@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight, Brain, Smartphone, Cloud,
-  CheckCircle, Monitor, PenTool, Database, Sparkles, MessageCircle
+  CheckCircle, Monitor, PenTool, Database, Sparkles, MessageCircle, ExternalLink
 } from "lucide-react";
 
 /* ===========================
@@ -74,58 +74,112 @@ const processSteps = [
 
 const projects = [
   {
-    tag: "Shopping Website",
+    tag: "E-Commerce",
+    tagColor: "text-yellow-600",
+    borderColor: "border-yellow-400",
+    title: "Auro Gold",
+    desc: "Modern gold jewellery e-commerce website with elegant product displays, premium UI/UX design, and seamless browsing experience.",
+    gradient: "from-yellow-100 to-amber-50",
+    icon: "💍",
+    tech: ["HTML", "CSS", "JavaScript"],
+    link: "https://github.com/dot-tech-solutions/Auro-Gold",
+    live: "https://goldapp-henna.vercel.app",
+  },
+  {
+    tag: "Fitness Website",
+    tagColor: "text-orange-600",
+    borderColor: "border-orange-400",
+    title: "Iron Paradise",
+    desc: "A bold, responsive fitness website for a gym — showcasing services, membership plans, trainer info, and engaging UI across all devices.",
+    gradient: "from-orange-100 to-red-50",
+    icon: "🏋️",
+    tech: ["TypeScript", "React", "Tailwind CSS"],
+    link: "https://github.com/dot-tech-solutions/IronParadise",
+    live: null,
+  },
+  {
+    tag: "Fitness Website",
     tagColor: "text-emerald-600",
     borderColor: "border-emerald-400",
-    title: "E-Commerce Platform",
-    desc: "A modern online store with seamless checkout, inventory management, and payment gateway integration.",
+    title: "FitZone",
+    desc: "Modern responsive gym and fitness website featuring fitness programs, membership plans, trainer profiles, and a user-friendly interface.",
     gradient: "from-emerald-100 to-teal-50",
-    icon: "🛒",
+    icon: "💪",
+    tech: ["HTML", "CSS", "JavaScript"],
+    link: "https://github.com/dot-tech-solutions/FitZone",
+    live: null,
   },
   {
-    tag: "Software Solution",
+    tag: "E-Commerce Platform",
     tagColor: "text-blue-600",
     borderColor: "border-blue-400",
-    title: "SaaS Dashboard",
-    desc: "Analytics dashboard for a fintech startup — real-time data, role-based access, and custom reporting.",
+    title: "E-Commerce Platform",
+    desc: "Full-stack e-commerce platform with product browsing, cart management, order processing, secure auth, and RESTful APIs.",
     gradient: "from-blue-100 to-cyan-50",
-    icon: "📊",
+    icon: "🛒",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
+    link: "https://github.com/Mani030306/Ecommerce-platform",
+    live: "https://ecommerce-platform-ashy.vercel.app",
   },
   {
-    tag: "Landing Page",
-    tagColor: "text-amber-600",
-    borderColor: "border-amber-400",
-    title: "Restaurant Website",
-    desc: "Elegant site with online ordering system, menu management, and reservation booking.",
-    gradient: "from-amber-100 to-orange-50",
-    icon: "🍽️",
-  },
-  {
-    tag: "Chatbot Development",
+    tag: "AI / ML",
     tagColor: "text-purple-600",
     borderColor: "border-purple-400",
-    title: "AI Chatbot",
-    desc: "LLM-powered customer support bot with FAQ automation, lead capture, and CRM integration.",
+    title: "CircuitMind AI",
+    desc: "AI-powered circuit design assistant that generates circuit diagrams and recommends electronic components using Python and n8n automation.",
     gradient: "from-purple-100 to-violet-50",
-    icon: "🤖",
+    icon: "⚡",
+    tech: ["Python", "AI", "n8n", "HTML"],
+    link: "https://github.com/Mani030306/CircuitMind-AI",
+    live: null,
   },
   {
-    tag: "Website Redesign",
-    tagColor: "text-rose-600",
-    borderColor: "border-rose-400",
-    title: "Portfolio Design & Redesign",
-    desc: "Complete brand refresh and redesign for a developer portfolio with modern UI and smooth animations.",
-    gradient: "from-rose-100 to-pink-50",
-    icon: "🎨",
-  },
-  {
-    tag: "Full Stack",
+    tag: "AI Writing Tool",
     tagColor: "text-indigo-600",
     borderColor: "border-indigo-400",
-    title: "Learning Platform",
-    desc: "Full-stack edtech platform with video courses, progress tracking, quizzes, and certificate generation.",
+    title: "Inline Language Intelligence",
+    desc: "Real-time AI writing assistant that enhances grammar, tone, clarity, and readability using the Gemini API.",
     gradient: "from-indigo-100 to-blue-50",
-    icon: "🎓",
+    icon: "✍️",
+    tech: ["React", "TypeScript", "Vite", "Gemini API"],
+    link: "https://github.com/Mani030306/Inline-Ianguage-Intelligence",
+    live: null,
+  },
+  {
+    tag: "NLP Tool",
+    tagColor: "text-teal-600",
+    borderColor: "border-teal-400",
+    title: "AI FAQ Generator",
+    desc: "Python-based tool that auto-generates FAQ question-answer pairs from text using NLP — works offline without external APIs.",
+    gradient: "from-teal-100 to-cyan-50",
+    icon: "❓",
+    tech: ["Python", "NLP", "Rule-based AI"],
+    link: "https://github.com/Mani030306/AI-based-FAQ-Generator-",
+    live: null,
+  },
+  {
+    tag: "AI Chatbot",
+    tagColor: "text-rose-600",
+    borderColor: "border-rose-400",
+    title: "Research Chatbot",
+    desc: "An intelligent research assistant chatbot that helps users find, summarize, and explore research topics conversationally.",
+    gradient: "from-rose-100 to-pink-50",
+    icon: "🤖",
+    tech: ["Python", "AI", "NLP"],
+    link: "https://github.com/Mani030306/Research-chat-bot",
+    live: null,
+  },
+  {
+    tag: "Computer Vision",
+    tagColor: "text-red-600",
+    borderColor: "border-red-400",
+    title: "Fire Detection (OpenCV)",
+    desc: "Real-time fire detection system using computer vision — analyzes video streams by color patterns for early fire safety monitoring.",
+    gradient: "from-red-100 to-orange-50",
+    icon: "🔥",
+    tech: ["Python", "OpenCV", "Computer Vision"],
+    link: "https://github.com/Mani030306/fire-detection-Using-OpenCV",
+    live: null,
   },
 ];
 
@@ -282,7 +336,40 @@ export default function HomeContent() {
                     {project.tag}
                   </span>
                   <h3 className="font-black text-slate-900 text-lg mb-2 leading-snug">{project.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed flex-1">{project.desc}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed flex-1 mb-4">{project.desc}</p>
+
+                  {/* Tech badges */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.tech.map((t) => (
+                      <span key={t} className="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                      GitHub
+                    </a>
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-1.5 text-xs font-bold ${project.tagColor} hover:opacity-80 transition-opacity`}
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
