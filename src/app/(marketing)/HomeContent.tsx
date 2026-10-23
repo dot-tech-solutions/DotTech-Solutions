@@ -334,19 +334,22 @@ export default function HomeContent() {
                 className="liquid-card-hover rounded-3xl overflow-hidden group flex flex-col"
               >
                 {/* Preview area */}
-                <div className={`h-44 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
+                <div className={`h-44 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
-                      className="object-cover"
+                      className="object-cover object-top"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      unoptimized={project.image.endsWith('.avif')}
                     />
                   ) : (
-                    <span className="text-7xl select-none">{project.icon}</span>
+                    <div className="h-full flex items-center justify-center">
+                      <span className="text-7xl select-none">{project.icon}</span>
+                    </div>
                   )}
-                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
 
                 {/* Content */}
