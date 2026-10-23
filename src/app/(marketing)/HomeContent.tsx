@@ -94,7 +94,7 @@ const projects = [
     desc: "A bold, responsive fitness website for a gym — showcasing services, membership plans, trainer info, and engaging UI across all devices.",
     gradient: "from-orange-100 to-red-50",
     icon: "🏋️",
-    image: "/ironparadise.avif",
+    image: "/ironparadise1.jpg",
     tech: ["TypeScript", "React", "Tailwind CSS"],
     link: "https://github.com/dot-tech-solutions/IronParadise",
     live: null,
