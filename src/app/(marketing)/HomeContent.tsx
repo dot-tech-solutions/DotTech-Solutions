@@ -410,31 +410,49 @@ export default function HomeContent() {
       </section>
 
       {/* ==================== IMPACT IN NUMBERS ==================== */}
-      <section className="relative z-10 mx-4 sm:mx-8 mb-8 rounded-[2rem] overflow-hidden bg-[#0A0A0A] py-20">
-        {/* Subtle gold glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="relative z-10 mx-4 sm:mx-8 mb-8 rounded-[2rem] overflow-hidden bg-[#0A1226] py-20">
+        {/* Logo gradient glow blobs */}
+        <div className="absolute -top-20 left-1/4 w-[400px] h-[400px] rounded-full blur-3xl pointer-events-none opacity-30"
+          style={{ background: "radial-gradient(circle, #00A3FF, transparent 70%)" }} />
+        <div className="absolute top-10 right-1/4 w-[350px] h-[350px] rounded-full blur-3xl pointer-events-none opacity-20"
+          style={{ background: "radial-gradient(circle, #9B51E0, transparent 70%)" }} />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] rounded-full blur-3xl pointer-events-none opacity-20"
+          style={{ background: "radial-gradient(circle, #5D5FEF, transparent 70%)" }} />
 
         <div className="section-container relative z-10 text-center">
           {/* Label */}
-          <p className="text-amber-400 text-xs font-black uppercase tracking-[0.25em] mb-3">
+          <p className="text-xs font-black uppercase tracking-[0.25em] mb-3"
+            style={{ color: "#00A3FF" }}>
             Achievements
           </p>
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-14 tracking-tight">
-            Our Impact in <span className="text-amber-400">Numbers</span>
+            Our Impact in{" "}
+            <span style={{ background: "linear-gradient(135deg, #00A3FF, #5D5FEF, #9B51E0)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              Numbers
+            </span>
           </h2>
 
           {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10 max-w-3xl mx-auto">
             <div className="sm:px-10 py-2">
-              <div className="text-5xl sm:text-6xl font-black text-amber-400 mb-3">9+</div>
+              <div className="text-5xl sm:text-6xl font-black mb-3"
+                style={{ background: "linear-gradient(135deg, #00A3FF, #5D5FEF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                9+
+              </div>
               <div className="text-slate-400 text-sm font-semibold tracking-wide">Projects Completed</div>
             </div>
             <div className="sm:px-10 py-2">
-              <div className="text-5xl sm:text-6xl font-black text-amber-400 mb-3">8+</div>
+              <div className="text-5xl sm:text-6xl font-black mb-3"
+                style={{ background: "linear-gradient(135deg, #5D5FEF, #9B51E0)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                8+
+              </div>
               <div className="text-slate-400 text-sm font-semibold tracking-wide">Happy Clients</div>
             </div>
             <div className="sm:px-10 py-2">
-              <div className="text-5xl sm:text-6xl font-black text-amber-400 mb-3">98%</div>
+              <div className="text-5xl sm:text-6xl font-black mb-3"
+                style={{ background: "linear-gradient(135deg, #00A3FF, #9B51E0)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                98%
+              </div>
               <div className="text-slate-400 text-sm font-semibold tracking-wide">Client Satisfaction</div>
             </div>
           </div>
