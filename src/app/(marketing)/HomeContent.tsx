@@ -81,6 +81,7 @@ const projects = [
     desc: "Modern gold jewellery e-commerce website with elegant product displays, premium UI/UX design, and seamless browsing experience.",
     gradient: "from-yellow-100 to-amber-50",
     icon: "💍",
+    image: null,
     tech: ["HTML", "CSS", "JavaScript"],
     link: "https://github.com/dot-tech-solutions/Auro-Gold",
     live: "https://goldapp-henna.vercel.app",
@@ -93,6 +94,7 @@ const projects = [
     desc: "A bold, responsive fitness website for a gym — showcasing services, membership plans, trainer info, and engaging UI across all devices.",
     gradient: "from-orange-100 to-red-50",
     icon: "🏋️",
+    image: "/ironparadise.avif",
     tech: ["TypeScript", "React", "Tailwind CSS"],
     link: "https://github.com/dot-tech-solutions/IronParadise",
     live: null,
@@ -105,6 +107,7 @@ const projects = [
     desc: "Modern responsive gym and fitness website featuring fitness programs, membership plans, trainer profiles, and a user-friendly interface.",
     gradient: "from-emerald-100 to-teal-50",
     icon: "💪",
+    image: "/fitzone.png",
     tech: ["HTML", "CSS", "JavaScript"],
     link: "https://github.com/dot-tech-solutions/FitZone",
     live: null,
@@ -117,6 +120,7 @@ const projects = [
     desc: "Full-stack e-commerce platform with product browsing, cart management, order processing, secure auth, and RESTful APIs.",
     gradient: "from-blue-100 to-cyan-50",
     icon: "🛒",
+    image: "/Ecommerce.jpg",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
     link: "https://github.com/Mani030306/Ecommerce-platform",
     live: "https://ecommerce-platform-ashy.vercel.app",
@@ -129,6 +133,7 @@ const projects = [
     desc: "AI-powered circuit design assistant that generates circuit diagrams and recommends electronic components using Python and n8n automation.",
     gradient: "from-purple-100 to-violet-50",
     icon: "⚡",
+    image: null,
     tech: ["Python", "AI", "n8n", "HTML"],
     link: "https://github.com/Mani030306/CircuitMind-AI",
     live: null,
@@ -141,6 +146,7 @@ const projects = [
     desc: "Real-time AI writing assistant that enhances grammar, tone, clarity, and readability using the Gemini API.",
     gradient: "from-indigo-100 to-blue-50",
     icon: "✍️",
+    image: null,
     tech: ["React", "TypeScript", "Vite", "Gemini API"],
     link: "https://github.com/Mani030306/Inline-Ianguage-Intelligence",
     live: null,
@@ -153,6 +159,7 @@ const projects = [
     desc: "Python-based tool that auto-generates FAQ question-answer pairs from text using NLP — works offline without external APIs.",
     gradient: "from-teal-100 to-cyan-50",
     icon: "❓",
+    image: null,
     tech: ["Python", "NLP", "Rule-based AI"],
     link: "https://github.com/Mani030306/AI-based-FAQ-Generator-",
     live: null,
@@ -165,6 +172,7 @@ const projects = [
     desc: "An intelligent research assistant chatbot that helps users find, summarize, and explore research topics conversationally.",
     gradient: "from-rose-100 to-pink-50",
     icon: "🤖",
+    image: null,
     tech: ["Python", "AI", "NLP"],
     link: "https://github.com/Mani030306/Research-chat-bot",
     live: null,
@@ -177,6 +185,7 @@ const projects = [
     desc: "Real-time fire detection system using computer vision — analyzes video streams by color patterns for early fire safety monitoring.",
     gradient: "from-red-100 to-orange-50",
     icon: "🔥",
+    image: null,
     tech: ["Python", "OpenCV", "Computer Vision"],
     link: "https://github.com/Mani030306/fire-detection-Using-OpenCV",
     live: null,
@@ -326,7 +335,17 @@ export default function HomeContent() {
               >
                 {/* Preview area */}
                 <div className={`h-44 bg-gradient-to-br ${project.gradient} flex items-center justify-center relative overflow-hidden`}>
-                  <span className="text-7xl select-none">{project.icon}</span>
+                  {project.image ? (
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <span className="text-7xl select-none">{project.icon}</span>
+                  )}
                   <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors duration-300" />
                 </div>
 
@@ -515,3 +534,4 @@ export default function HomeContent() {
     </div>
   );
 }
+
