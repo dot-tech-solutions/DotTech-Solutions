@@ -409,6 +409,38 @@ export default function HomeContent() {
         </div>
       </section>
 
+      {/* ==================== IMPACT IN NUMBERS ==================== */}
+      <section className="relative z-10 mx-4 sm:mx-8 mb-8 rounded-[2rem] overflow-hidden bg-[#0A0A0A] py-20">
+        {/* Subtle gold glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="section-container relative z-10 text-center">
+          {/* Label */}
+          <p className="text-amber-400 text-xs font-black uppercase tracking-[0.25em] mb-3">
+            Achievements
+          </p>
+          <h2 className="text-3xl sm:text-5xl font-black text-white mb-14 tracking-tight">
+            Our Impact in <span className="text-amber-400">Numbers</span>
+          </h2>
+
+          {/* Stats */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10 max-w-3xl mx-auto">
+            <div className="sm:px-10 py-2">
+              <div className="text-5xl sm:text-6xl font-black text-amber-400 mb-3">9+</div>
+              <div className="text-slate-400 text-sm font-semibold tracking-wide">Projects Completed</div>
+            </div>
+            <div className="sm:px-10 py-2">
+              <div className="text-5xl sm:text-6xl font-black text-amber-400 mb-3">8+</div>
+              <div className="text-slate-400 text-sm font-semibold tracking-wide">Happy Clients</div>
+            </div>
+            <div className="sm:px-10 py-2">
+              <div className="text-5xl sm:text-6xl font-black text-amber-400 mb-3">98%</div>
+              <div className="text-slate-400 text-sm font-semibold tracking-wide">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ==================== AGILE PROCESS ==================== */}
       <section className="py-24 relative z-10">
         <div className="section-container">
